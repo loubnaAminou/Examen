@@ -2,16 +2,14 @@ var express = require('express');
 var router = express.Router();
 const {PrismaClient} = require('@prisma/client')
 const prisma = new PrismaClient()
+const data = require('../movies_reduit.json')
 
 /*GET movies listing. */
-router.get('/',async function(req, res, next) {
-  const filePath = "../movies_reduit.json";
-  
-  res.json(JSON.parse(fs.readFileSync(filePath)));
+/*router.get('/',async function(req, res, next) {
+  res.json(data);
 
 });
-
-/* */
+*/
 
 router.get('/',async function(req, res, next) {
   const movies = await prisma.movies.findMany({take: 10})
@@ -26,6 +24,6 @@ router.get('/',async function(req, res, next) {
     }
 });
 
-});
+}); 
 
 module.exports = router;

@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 
 var app = express();
+var cors = require('cors')
+
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
